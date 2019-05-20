@@ -28,22 +28,18 @@ class verContacto :  AppCompatActivity(), OnMapReadyCallback {
         var imagen: Int = bundle.getInt("imagen")
         nombre = intent.getStringExtra("nombre")
         lat = intent.getStringExtra("lat")
-        lon = intent.getStringExtra("lon")
-        var ciudad: String = intent.getStringExtra("ciudad")
-
+        lon = intent.getStringExtra("lon") 
 
         supportActionBar!!.title = nombre
 
     }
     override fun onMapReady(googleMap: GoogleMap) {
-
         mMap = googleMap
- 
-        val latLngOrigin = LatLng(10.3181466, 123.9029382) // Ayala
-        val latLngDestination = LatLng(10.311795,123.915864) // SM City
-        this.mMap!!.addMarker(MarkerOptions().position(latLngOrigin).title("Ayala"))
-        this.mMap!!.addMarker(MarkerOptions().position(latLngDestination).title("SM City"))
-        this.mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngOrigin, 14.5f))
-    }
 
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(lat!!.toDouble(), lon!!.toDouble())
+        mMap.addMarker(MarkerOptions().position(sydney).title(nombre))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
+    }
 }
