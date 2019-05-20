@@ -55,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
             var correo = usuario.email
             intent.putExtra("Usuario",correo)
             startActivity(intent)
+            finish()
         }
     }
 
